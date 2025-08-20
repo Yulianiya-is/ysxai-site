@@ -12,14 +12,14 @@
     height: 100%;
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
-    background: #fff; /* белые поля на десктопе */
+    background: #000; /* чтобы белый текст смотрелся лучше */
   }
 
-  /* Контейнер видео — слой 0 (НЕ отрицательный z-index) */
+  /* Контейнер видео */
   #video-wrap {
     position: fixed;
     inset: 0;
-    background: #fff;
+    background: #000;
     overflow: hidden;
     z-index: 0;
   }
@@ -28,23 +28,22 @@
   #bg-video {
     width: 100%;
     height: 100%;
-    object-fit: contain;          /* на десктопе — полосы по бокам */
+    object-fit: contain;
     object-position: center center;
   }
 
-  /* Мобильные/портрет — заполняем экран */
   @media (max-aspect-ratio: 9/16) {
     #bg-video { object-fit: cover; }
   }
 
-  /* Текст — слой выше видео */
+  /* Текст */
   .center-text, .bottom-text {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: #000;                  /* пока чёрный, как просили */
-    z-index: 1;                   /* ВЫШЕ видео */
+    color: #fff;                  /* теперь белый */
+    z-index: 1;
     width: 90%;
     max-width: 600px;
   }
@@ -54,7 +53,7 @@
 
   .bottom-text { bottom: 40px; }
   .bottom-text p { margin: 0; line-height: 1.2; }
-  .bottom-text a { color: #000; text-decoration: none; }
+  .bottom-text a { color: #fff; text-decoration: none; }
   .bottom-text a:hover { text-decoration: underline; }
 </style>
 </head>
@@ -79,7 +78,6 @@
 </div>
 
 <script>
-  // Подстраховка для iOS/Low Power: если автоплей заблокирован — запускаем при первом касании/возврате во вкладку
   const v = document.getElementById('bg-video');
   function tryPlay(){ v && v.play && v.play().catch(()=>{}); }
   document.addEventListener('touchstart', tryPlay, { once: true });
