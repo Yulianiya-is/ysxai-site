@@ -1,124 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YSXAI</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Montserrat', sans-serif;
-    background-color: white; /* боковые поля на ПК */
-    overflow: hidden;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YSXAI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <style>
+    /* Общие стили */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      background-color: white;
+      overflow: hidden;
+    }
 
-  /* Контейнер для видео */
-  .video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    z-index: -1; /* видео позади текста */
-  }
+    /* Контейнер для видео */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: -1;
+    }
 
-  /* Видео */
-  #bg-video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain; /* ПК: сохраняем пропорции + белые боковые полосы */
-  }
-
-  /* Мобильные устройства и вертикальный экран */
-  @media (max-width: 768px), (orientation: portrait) {
+    /* Видео */
     #bg-video {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* мобильные: видео покрывает весь экран */
+      object-fit: contain;
     }
-  }
 
-  /* Текст поверх видео */
-  .center-text, .bottom-text {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: white; /* текст белый */
-    width: 90%;
-    max-width: 600px;
-    z-index: 1; /* поверх видео */
-  }
-
-  .center-text {
-    top: 40%;
-  }
-
-  .center-text h1,
-  .center-text p {
-    margin: 0;
-    padding: 0;
-    line-height: 1.1;
-  }
-
-  .bottom-text {
-    bottom: 40px;
-  }
-
-  .bottom-text p {
-    margin: 0;
-    padding: 0;
-    line-height: 1.2;
-  }
-
-  .bottom-text a {
-    color: white;
-    text-decoration: none;
-  }
-
-  .bottom-text a:hover {
-    text-decoration: underline;
-  }
-
-  /* Адаптив для текста на мобильных */
-  @media (max-width: 768px), (orientation: portrait) {
+    /* Текст */
     .center-text, .bottom-text {
-      font-size: 12px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      width: 90%;
+      max-width: 600px;
+      z-index: 1;
     }
-  }
 
-</style>
+    .center-text {
+      top: 40%;
+    }
+
+    .bottom-text {
+      bottom: 40px;
+    }
+
+    .bottom-text p {
+      margin: 0;
+      padding: 0;
+      line-height: 1.2;
+    }
+
+    .bottom-text a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Адаптив для мобильных */
+    @media (max-width: 768px), (orientation: portrait) {
+      #bg-video {
+        object-fit: cover;
+      }
+
+      .center-text, .bottom-text {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="video-container">
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="assets/video.mp4" type="video/mp4">
-    <source src="assets/video.webm" type="video/webm">
-    Ваш браузер не поддерживает видео.
-  </video>
-</div>
+  <div class="video-container">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="assets/video.mp4" type="video/mp4">
+      <source src="assets/video.webm" type="video/webm">
+      Ваш браузер не поддерживает видео.
+    </video>
+  </div>
 
-<div class="center-text">
-  <h1>YS x AI</h1>
-  <p>AI production studio</p>
-  <p>based in Milan</p>
-</div>
+  <div class="center-text">
+    <h1>YS x AI</h1>
+    <p>AI production studio</p>
+    <p>based in Milan</p>
+  </div>
 
-<div class="bottom-text">
-  <p>fashion & cinema projects:</p>
-  <p><a href="mailto:info@ysxai.it">info@ysxai.it</a></p>
-</div>
+  <div class="bottom-text">
+    <p>fashion & cinema projects:</p>
+    <p><a href="mailto:info@ysxai.it">info@ysxai.it</a></p>
+  </div>
 
 </body>
 </html>
