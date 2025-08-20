@@ -15,28 +15,37 @@
     overflow: hidden;
   }
 
-  /* Контейнер видео */
+  /* Контейнер для видео */
   .video-container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    z-index: -1; /* видео позади текста */
   }
 
+  /* Видео */
   #bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -1;
-    object-fit: contain; /* сохраняем пропорции на ПК */
+    object-fit: contain; /* ПК: сохраняем пропорции + белые боковые полосы */
+  }
+
+  /* Мобильные устройства и вертикальный экран */
+  @media (max-width: 768px), (orientation: portrait) {
+    #bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* мобильные: видео покрывает весь экран */
+    }
   }
 
   /* Текст поверх видео */
@@ -45,14 +54,16 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
+    color: white; /* текст белый */
     width: 90%;
     max-width: 600px;
+    z-index: 1; /* поверх видео */
   }
 
   .center-text {
     top: 40%;
   }
+
   .center-text h1,
   .center-text p {
     margin: 0;
@@ -63,33 +74,29 @@
   .bottom-text {
     bottom: 40px;
   }
+
   .bottom-text p {
     margin: 0;
     padding: 0;
-    line-height: 1.3;
+    line-height: 1.2;
   }
+
   .bottom-text a {
     color: white;
     text-decoration: none;
   }
+
   .bottom-text a:hover {
     text-decoration: underline;
   }
 
-  /* Мобильная адаптация: видео покрывает весь экран */
+  /* Адаптив для текста на мобильных */
   @media (max-width: 768px), (orientation: portrait) {
-    #bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: none;
-      top: 0;
-      left: 0;
-    }
     .center-text, .bottom-text {
       font-size: 12px;
     }
   }
+
 </style>
 </head>
 <body>
@@ -100,17 +107,17 @@
     <source src="assets/video.webm" type="video/webm">
     Ваш браузер не поддерживает видео.
   </video>
+</div>
 
-  <div class="center-text">
-    <h1>YS x AI</h1>
-    <p>AI production studio</p>
-    <p>based in Milan</p>
-  </div>
+<div class="center-text">
+  <h1>YS x AI</h1>
+  <p>AI production studio</p>
+  <p>based in Milan</p>
+</div>
 
-  <div class="bottom-text">
-    <p>fashion & cinema projects:</p>
-    <p><a href="mailto:info@ysxai.it">info@ysxai.it</a></p>
-  </div>
+<div class="bottom-text">
+  <p>fashion & cinema projects:</p>
+  <p><a href="mailto:info@ysxai.it">info@ysxai.it</a></p>
 </div>
 
 </body>
